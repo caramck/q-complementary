@@ -1,6 +1,7 @@
 #calculateJ2.py
 #Purpose: Calculate J^(2) given total energies HOMOs from anion, cation, and neutral molecular DFT calculations
 #Caroline McKeon, November 2019
+#edit
 
 ###############INPUT#####################
 #SCF Energies: Neutral, Anion, Cation
