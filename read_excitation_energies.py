@@ -5,14 +5,23 @@
 #figure out how to pass something in on the command line that will set the filePath variable
 #keep this file stored in some specific place, call on it to perform this routine and save output to a passed in directory
 
+#dataframe format: [['a','b'],['c','d']]
+#each entry ['a','b'] is a row
+#each entry will be an excitation
+
 #allow python script to use shell arguments
 import sys
+import pandas as pd
+
 fileName=sys.argv[1]
 excel=sys.argv[2]
 
 #initialize oscillator and energies array and file path for dft outout
 energies=[]
 oscillators=[]
+
+#initialize excel array
+
 
 #Read in all lines of file to reference later
 m=open(fileName+".out","r")
