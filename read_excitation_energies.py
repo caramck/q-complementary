@@ -8,6 +8,7 @@
 #allow python script to use shell arguments
 import sys
 fileName=sys.argv[1]
+excel=sys.argv[2]
 
 #initialize oscillator and energies array and file path for dft outout
 energies=[]
