@@ -11,9 +11,6 @@ import pandas as pd
 
 def parse_file(file_name):
 
-    #print file name
-    print("file", file_name)
-
     #Load output file
     p=open(file_name,"r")
     all_lines=p.readlines()
@@ -46,12 +43,10 @@ def parse_file(file_name):
 
     #Total lines in output file
     sec_anchors.append(len(all_lines))
-    print(sec_anchors)
 
     cur_line=1
     #Pull out SCF and HOMO energies for each calculation of interest
     for i in range(jobs):
-        print("i:"+str(i))
         #Look selectively in the range in file corresponding to that calculation
     
         #initiate homoArray outside of loop
@@ -61,9 +56,7 @@ def parse_file(file_name):
             cur_line+=1
             #search for SCF energy for that calculation
             if all_lines[j].find("$molecule") != -1:
-                print("found")
                 charge=str(all_lines[j+1])
-                print("charge:"+charge)
 
             if all_lines[j].find("Total energy in the final basis set") != -1:
                 scf_line=str(all_lines[j])
@@ -90,17 +83,14 @@ def parse_file(file_name):
      
         
         if "0 1" in str(charge):
-            print("here")
             job_type=0
             neutral_scf=SCF_energy
             neutral_homo=HOMO_energy
         elif "-1 2" in str(charge):
-            print("here2")
             job_type=1
             anion_scf=SCF_energy
             anion_homo=HOMO_energy
         elif "1 2" in str(charge):
-            print("here3")
             job_type=2
             cation_scf=SCF_energy
 
@@ -123,15 +113,18 @@ for roots, dirs, files in os.walk("."):
     for file_name in files:
         if file_string in file_name:
             results=parse_file(file_name)
-            results.insert(0,file_name)
             df_array.append(results)
 
 #create data frame
 df=pd.DataFrame(data=df_array)
+df.rename(columns=df.iloc[0])
 
 print(df)
 
-#further data manipulation
+#further data manipulation: TODO
+#convert energies of everything to eVs
+#for i in range(1,len(df_array[0])):
+    #data = df[df_array[0][i]]
 
 #create excel document
 df.to_excel(file_string+".xlsx")
