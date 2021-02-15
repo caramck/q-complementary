@@ -112,12 +112,12 @@ file_string=sys.argv[1]
 df_array=[['File','SCF Neutral (Ha)','SCF Anion (Ha)','SCF Cation (Ha)','HOMO Neutral (Ha)','HOMO Anion (Ha)']]
 
 #search all files in folder for this string, if found, include full file name in array
-roots, dirs, files = os.walk(".")
-for file_name in files:
-    if file_string in file_name:
-        results=parse_file(x)
-        results.insert(0,file_name)
-        df_array.append(results)
+for roots, dirs, files in os.walk("."):
+    for file_name in files:
+        if file_string in file_name:
+            results=parse_file(x)
+            results.insert(0,file_name)
+            df_array.append(results)
 
 #create data frame
 df=pd.DataFrame(data=df_array)
