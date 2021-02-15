@@ -11,6 +11,9 @@ import pandas as pd
 
 def parse_file(file_name):
 
+    #print file name
+    print("file", file_name)
+
     #Load output file
     p=open(file_name,"r")
     all_lines=p.readlines()
