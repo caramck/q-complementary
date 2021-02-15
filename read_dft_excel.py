@@ -102,7 +102,11 @@ def parse_file(file_name):
             cation_scf=SCF_energy
 
     s.close()
-    return resultsAr
+
+    #add results to array
+    results_arr=[file_name,neutral_scf,anion_scf,cation_scf,neutral_homo,anion_homo]
+
+    return results_arr
 
 #read in all files in directory that have specified string in the name 
 #e.g. "_dft_" to read in all the files with _dft_ in the name
