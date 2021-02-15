@@ -115,7 +115,7 @@ df_array=[['File','SCF Neutral (Ha)','SCF Anion (Ha)','SCF Cation (Ha)','HOMO Ne
 for roots, dirs, files in os.walk("."):
     for file_name in files:
         if file_string in file_name:
-            results=parse_file(x)
+            results=parse_file(file_name)
             results.insert(0,file_name)
             df_array.append(results)
 
