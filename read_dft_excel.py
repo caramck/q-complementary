@@ -36,7 +36,6 @@ def parse_file(file_name):
         #parse output file for job sections for all three jobs of interest
         if line.find("Running Job") !=-1:
             jobs+=1
-            print("jobs:"+str(jobs))
             sec_anchors.append(cur_line)
     s.close()
 
@@ -106,7 +105,7 @@ def parse_file(file_name):
 file_string=sys.argv[1]
 
 #names of columns in excel sheet
-df_array=[['File','SCF Neutral (Ha)','SCF Anion (Ha)','SCF Cation (Ha)','HOMO Neutral (Ha)','HOMO Anion (Ha)']]
+df_array=[['file','scf_neutral_ha','scf_anion_ha','scf_cation_ha','homo_neutral_ha','homo_anion_ha']]
 
 #search all files in folder for this string, if found, include full file name in array
 for roots, dirs, files in os.walk("."):
