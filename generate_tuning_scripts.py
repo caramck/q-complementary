@@ -108,7 +108,7 @@ class generate_script:
 for gamma in gamma_list:
 
     #create script object
-    script=generate_script(gamma,seed_gam,coords)
+    script=generate_script(gamma,seed_gam,coords,epsilon)
 
     #create script
     script.create()
