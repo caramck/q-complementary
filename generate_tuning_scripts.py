@@ -66,7 +66,7 @@ class generate_script:
 
         #define beta off epsilon
         alpha=float(0.2)
-        beta=(float(1/epsilon))-alpha
+        beta=(float(1/float(epsilon)))-float(alpha)
 
         #create new text file for this run
         with open(file_name,"w+") as n:
