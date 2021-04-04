@@ -12,6 +12,33 @@ import matplotlib as plt
 import seaborn as sns
 import numpy as np   
 
+##########################################################
+# Define which functionality this code will use          #
+##########################################################
+
+flag=sys.argv[1]
+
+##########################################################
+# generate directory of output files                      #
+##########################################################
+def generate_directory(cwd):
+    """
+    generate_directory
+
+    :param cwd: current working directory
+    :return none
+    """
+    #make a new directory
+    names=cwd.split("/")
+    new_dir=str(names[-1])+"_out"
+    os.mkdir(new_dir)
+
+    #copy all files with ".out" into this directory
+    file_string=".out"
+    for roots, dirs, files in os.walk(cwd):
+        for file_name in files:
+            if file_string in file_name:
+                os.system('cp '+file_name+' '+str(new_dir))
 
 ##########################################################
 # Define file_parser object                              #
@@ -210,12 +237,15 @@ class file_parser:
 #find current working directory
 cwd=os.getcwd()
 
-#create file parser object
-parser=file_parser("/Users/CAMcKeon/Desktop/outs")
+if flag=="a":
+    #create file parser object
+    parser=file_parser("/Users/CAMcKeon/Desktop/outs")
 
-#parse files in directory
-parser.search_all_files()
+    #parse files in directory
+    parser.search_all_files()
 
+if flag=="b":
+    generate_directory(cwd)
 
 
 
