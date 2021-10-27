@@ -81,6 +81,7 @@ f = open("a_"+file_name, "x")
 for atom in angstrom_array:
     f.write("\n"+str(atom[0])+ "  "+str(atom[1])+"  "+str(atom[2])+"  "+str(atom[3]))
 
+f.write("\n\n")
 f.close()
 
 
