@@ -30,7 +30,9 @@ with open (file_name+".out","r") as f:
 
     for line in f:
         current_line+=1
-        if line.find("TDDFT Excitation Energies") != -1:
+        print("here")
+        if line.find("Excitation Energies") != -1:
+            print("here")
             section_line=current_line
             #iterate through all_lines starting at section_line, check if line contains -------
             for i in range(section_line+3,len(all_lines),1):

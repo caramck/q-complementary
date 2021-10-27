@@ -210,6 +210,7 @@ class file_parser:
         for roots, dirs, files in os.walk(self.dir_name):
             for file_name in files:
                 if file_string in file_name:
+                    print("Parsing "+str(file_name))
                     results=parse_file(self.dir_name+"/"+file_name)
                     df_array.append(results)
 
@@ -225,8 +226,9 @@ class file_parser:
         #print dataframe
         print(df)
 
+        print(cwd+"/tuning.xlsx")
         #create excel document
-        df.to_excel("/Users/CAMcKeon/Desktop/outs/tuning.xlsx")              
+        df.to_excel(cwd+"/tuning.xlsx")              
 
         #create plot and save it
         #sns.lineplot(data=df, x="gamma", y="passengers")
@@ -240,7 +242,7 @@ cwd=os.getcwd()
 
 if flag=="a":
     #create file parser object
-    parser=file_parser("/Users/CAMcKeon/Desktop/outs")
+    parser=file_parser(cwd)
 
     #parse files in directory
     parser.search_all_files()
